@@ -11,7 +11,10 @@ import java.util.Arrays;
 public class Mainnio {
     public static void writeFile(String filename, String content) {
         Path filePath = Paths.get(filename);
-        try (FileChannel writeChannel = FileChannel.open(filePath, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) { //try 괄호 안은 finally와 동일한 역할
+        try (FileChannel writeChannel = FileChannel.open(filePath,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.WRITE,
+                StandardOpenOption.APPEND)) { //try 괄호 안은 finally와 동일한 역할
             ByteBuffer bffr = ByteBuffer.allocate(1024);
             bffr.put(content.getBytes());
             bffr.flip();
